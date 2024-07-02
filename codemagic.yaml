@@ -10,7 +10,7 @@ workflows:
           flutter pub get
       - name: Build APK
         script: |
-          flutter build apk --release
+          flutter build apk --release --target=main.dart
     artifacts:
       - build/**/outputs/**/*.apk
     publishing:
