@@ -76,8 +76,10 @@ class DeviceScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            // Code to send data goes here
+          onPressed: () async {
+            List<BluetoothService> services = await device.discoverServices();
+            BluetoothCharacteristic characteristic = services[0].characteristics[0];
+            await characteristic.write(utf8.encode("Hello World"));
           },
           child: Text('Send Data'),
         ),
